@@ -1,4 +1,3 @@
-
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { MusicContext } from './MusicContext'; // Import the context
 
@@ -82,6 +81,9 @@ const RightSidebar = () => {
         return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     };
 
+    // Generate a random duration for testing if duration is not set
+    const getRandomDuration = () => Math.floor(Math.random() * 300) + 30; // Random duration between 30 and 330 seconds
+
     return (
         <div className="w-1/5 h-screen" style={{ background: 'rgba(32, 10, 10, 1)' }}>
             <div
@@ -132,7 +134,7 @@ const RightSidebar = () => {
                         </div>
                         {/* Playback Time and Progress Bar */}
                         <div style={{ margin: '10px 0', color: '#fff' }}>
-                            <span>{formatTime(currentTime)} / {duration ? formatTime(duration) : '0:00'}</span>
+                            <span>{formatTime(currentTime)} / {duration ? formatTime(duration) : formatTime(getRandomDuration())}</span>
                             <input
                                 type="range"
                                 min="0"
